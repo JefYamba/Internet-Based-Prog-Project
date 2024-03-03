@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div layout:fragment="content">
+      <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col">
+                        <h1>Book</h1>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        
+        <section class="content">
+            <div class="container-lg">
+                <div class="row ">
+                    <div class="col-md-4">
+                        
+                        <!-- Profile Image -->
+                        <div class="card card-primary card-outline">
+                            <div class="card-body box-profile"   style="display: flex;justify-content: center;">
+                                <div class="text-center my-4">
+                                    <div
+                                            class="img-bordered-sm"
+                                            style="
+                                            width: 210px;
+                                            height: 290px;
+                                            border-radius: 10px;
+                                            overflow: hidden;
+                                            background-color: lightgray;"
+                                    >
+                                        <img alt="" src="" style="width: 150px;">
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    
+                    <div class="col-md-8">
+                        <div class="card  card-primary card-outline">
+                            <div class="card-body">
+                                <form class="form-horizontal text-nowrap">
+                                    <div class="form-group row my-2">
+                                        <div  class="col-sm-2 col-form-label text-bold">ISBN</div>
+                                        <div class="col-sm-10 col-form-label">546546</div>
+                                    </div>
+                                    <div class="form-group row my-2">
+                                        <div class="col-sm-2 col-form-label text-bold">Title</div>
+                                        <div class="col-sm-10 col-form-label">Harry Potter</div>
+                                    </div>
+                                    <div class="form-group row my-2">
+                                        <div class="col-sm-2 col-form-label text-bold">Author</div>
+                                        <div class="col-sm-10 col-form-label">Alexander Pierce</div>
+                                    </div>
+                                    
+                                    <div class="form-group row my-2">
+                                        <div class="col-sm-2 col-form-label text-bold">Editor</div>
+                                        <div class="col-sm-10 col-form-label">Ed printer</div>
+                                    </div>
+                                    <div class="form-group row my-2">
+                                        <div class="col-sm-2 col-form-label text-bold">Unit Price</div>
+                                        <div class="col-sm-10 col-form-label">67.99</div>
+                                    </div>
+                                    <div class="form-group row my-2">
+                                        <div class="col-sm-2 col-form-label text-bold">Quantity</div>
+                                        <div class="col-sm-10 col-form-label">600</div>
+                                    </div>
+                                    
+                                </form>
+                            </div><!-- /.card-body -->
+                            <div class="card-footer">
+                                <div class="text-right">
+                                    <a href="#" class="btn btn-sm btn-info mx-2">
+                                        <i class="fa fa-wrench  mx-2"></i> Add in Stock
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-warning mx-2">
+                                        <i class="fa fa-wrench  mx-2"></i> Edit Book
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-danger mx-2">
+                                        <i class="fa fa-trash mx-2"></i> Delete Book
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+            </div>
+        </section>
+      
+    </div>
+</body>
+</html>

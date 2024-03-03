@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/_layout">
+<body>
+    
+    <div layout:fragment="content">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col">
+                        <h1>Home</h1>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Info boxes -->
+                <div class="row">
+                    <div class="col-lg-3 col-6">
+                        <!-- small card -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>150</h3>
+                                
+                                <p>New Orders</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small card -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                                
+                                <p>Bounce Rate</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-stats-bars"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small card -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3>44</h3>
+                                
+                                <p>User Registrations</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small card -->
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3>65</h3>
+                                
+                                <p>Unique Visitors</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                </div>
+                <!-- /.row -->
+                <!-- TABLE: LATEST ORDERS -->
+                <div class="card">
+                    <div class="card-header border-transparent">
+                        <h3 class="card-title">Latest Books</h3>
+                        
+                        <div class="card-tools">
+                            <a href="#" class="btn btn-sm btn-info mx-2">Add New Book</a>
+                            <a href="#" class="btn btn-sm btn-secondary mx-2">View All Books</a>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body p-0">
+                        <div class="table-responsive"   style="height: 520px;">
+                            <table class="table m-0  table-head-fixed text-nowrap table-hover table-striped projects">
+                                <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th>Image</th>
+                                    <th class="text-center">ISBN </th>
+                                    <th class="text-left">Product Name</th>
+                                    <th class="text-left">Author</th>
+                                    <th class="text-left">Editor</th>
+                                    <th class="text-center">Unit Price</th>
+                                    <th class="text-center">Quantity</th>
+                                    
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th class="text-center">#</th>
+                                        <th style="height: 100px">
+                                            <div class="attachment-img" ><img th:src="@{images/harry-potter-book.jpg}" style="height: 60px" alt="Product Image"></div>
+                                        </th>
+                                        <td class="text-center">1172014</td>
+                                        <td class="text-left">Harry Potter</td>
+                                        <td class="text-left">Alexander Pierce</td>
+                                        <td class="text-left">Editor</td>
+                                        <td class="text-center">67.99</td>
+                                        <td class="text-center">530</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-center">#</th>
+                                        <th>
+                                            <div class="attachment-img"><img th:src="@{images/harry-potter-book.jpg}" style="height: 60px"alt="Product Image"></div>
+                                        </th>
+                                        <td class="text-center">1172014</td>
+                                        <td class="text-left">Harry Potter</td>
+                                        <td class="text-left">Alexander Pierce</td>
+                                        <td class="text-left">Editor</td>
+                                        <td class="text-center">67.99</td>
+                                        <td class="text-center">530</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-center">#</th>
+                                        <th>
+                                            <div class="attachment-img"><img th:src="@{images/harry-potter-book.jpg}" style="height: 60px" alt="Product Image"></div>
+                                        </th>
+                                        <td class="text-center">1172014</td>
+                                        <td class="text-left">Harry Potter</td>
+                                        <td class="text-left">Alexander Pierce</td>
+                                        <td class="text-left">Editor</td>
+                                        <td class="text-center">67.99</td>
+                                        <td class="text-center">530</td>
+                                    </tr>
+                                
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.card-footer -->
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

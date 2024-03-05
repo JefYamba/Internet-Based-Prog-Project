@@ -1,6 +1,6 @@
-package cg.jefy.IBPProject.security.repositories;
+package cg.jefy.IBPProject.repositories;
 
-import cg.jefy.IBPProject.security.entities.Role;
+import cg.jefy.IBPProject.entities.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

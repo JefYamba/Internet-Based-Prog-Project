@@ -9,7 +9,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col">
-                        <h1>Edit Book</h1>
+                        <h1>Add New Book</h1>
                     </div>
                 </div>
             </div>
@@ -18,7 +18,7 @@
         
         <section class="content">
             <div class="container-fluid">
-                <form class="row" th:object="${book}" th:action="@{/books/update/{id} (id = ${book.id})}" method="POST">
+                <form class="row" th:action="@{/books/add}"  th:object="${book}" method="POST">
                     
                     <div class="col-xl-6 col-md-9 col-12 mx-auto">
                         <div class="card  card-primary card-outline">
@@ -63,7 +63,7 @@
                             
                             <div class="card-footer">
                                 <div class="text-right">
-                                    <button type="submit" class="btn btn-info btn-sm" style="width: 200px">Register</button>
+                                    <button type="submit" class="btn btn-info btn-sm" style="width: 200px">Add Book</button>
                                 </div>
                             </div>
                         </div>

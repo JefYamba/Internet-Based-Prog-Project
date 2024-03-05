@@ -12,6 +12,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "books")
 public class Book {
@@ -20,21 +21,16 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private String isbn;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false)
     private String title;
 
     @Column(length = 100)
     private String author;
 
     @Column(length = 100)
-    private String editor;
+    private String publisher;
 
-    @Column(nullable = false)
     private Double unitPrice;
-
-    @Lob
-    private byte[] image;
 }

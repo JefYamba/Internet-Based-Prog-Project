@@ -26,8 +26,8 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Optional<Book> getBookById(Long id) {
-        return bookRepository.findById(id);
+    public Book getBookById(Long id) {
+        return bookRepository.findById(id).orElse(null);
     }
 
     @Override
@@ -36,18 +36,21 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book updateBook(Book book) {
+    public Book updateBook(Long id, Book book) {
 
-        if (bookRepository.findById(book.getId()).isPresent()){
-            Book exitingBook = bookRepository.findById(book.getId()).get();
-            exitingBook.setIsbn(book.getIsbn());
-            exitingBook.setTitle(book.getTitle());
-            exitingBook.setAuthor(book.getAuthor());
-            exitingBook.setEditor(book.getEditor());
-            exitingBook.setUnitPrice(book.getUnitPrice());
-            exitingBook.setImage(book.getImage());
+        Optional<Book> optionalBook = bookRepository.findById(id);
 
-            bookRepository.save(exitingBook);
+        if (optionalBook.isPresent()){
+
+            Book existingBook = optionalBook.get();
+
+            existingBook.setIsbn(book.getIsbn());
+            existingBook.setTitle(book.getTitle());
+            existingBook.setAuthor(book.getAuthor());
+            existingBook.setPublisher(book.getPublisher());
+            existingBook.setUnitPrice(book.getUnitPrice());
+
+            bookRepository.save(existingBook);
         }
 
         return null;

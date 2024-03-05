@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/_layout">
 <body>
     
@@ -18,7 +19,7 @@
         </section>
         
         <section class="content">
-            <div class="container-fluid">
+            <div class="container-md">
                 <div class="card">
                     <div class="card-header border-transparent">
                         <div class="container-fluid">
@@ -42,14 +43,14 @@
         </section>
         
         <section class="content">
-            <div class="container-fluid">
+            <div class="container-md">
                 <!-- TABLE: LATEST ORDERS -->
                 <div class="card">
                     <div class="card-header border-transparent">
                         <h3 class="card-title">All Users</h3>
                         
                         <div class="card-tools">
-                            <a href="#" class="btn btn-sm btn-info mx-2">Add New User</a>
+                            <a th:href="@{/users/new}" class="btn btn-sm btn-info mx-2">Add New User</a>
                         </div>
                     </div>
                     
@@ -60,50 +61,28 @@
                             <table class="table m-0  table-head-fixed text-nowrap table-hover table-striped projects">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Image</th>
-                                        <th>Firstname</th>
-                                        <th>Lastname</th>
-                                        <th>Gender</th>
-                                        <th>Email</th>
-                                        <th>Department</th>
-                                        <th>Role</th>
+                                        <th class="text-center">#</th>
+                                        <th class="text-left">Firstname</th>
+                                        <th class="text-left">Lastname</th>
+                                        <th class="text-left">Email</th>
+                                        <th class="text-left">Department</th>
+                                        <th class="text-left">Role</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>
-                                            <img class="table-avatar" th:src="@{images/avatar.png}" alt="image profile">
-                                        </th>
-                                        <td>John</td>
-                                        <td>Doe</td>
-                                        <td>Male</td>
-                                        <td>johndoe@test.com</td>
-                                        <td>IT Dep.</td>
-                                        <td>ADMIN</td>
+                                <tbody >
+                                    <tr  th:each="user,iterStat : ${users}">
+                                        <th class="text-center" th:text="${iterStat.count}"></th>
+                                        <td class="text-left" th:text="${user.firstname}"></td>
+                                        <td class="text-left" th:text="${user.lastname}"></td>
+                                        <td class="text-left" th:text="${user.email}"></td>
+                                        <td class="text-left" th:text="${user.department}"></td>
+                                        <td class="text-center" th:text="${user.role}"  th:class="${user.role eq 'USER' ? 'text-info' : 'text-danger' }"></td>
                                         <td class="text-center">
-                                            <a href="" class="btn btn-outline-info btn-sm"> <i class="fa fa-eye"></i> View</a>
+                                            <a th:href="@{/users/view/{id} (id=${user.id})}" class="btn btn-outline-info btn-sm"> <i class="fa fa-eye"></i> View</a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>
-                                            <img class="table-avatar" th:src="@{images/avatar.png}" alt="image profile">
-                                        </th>
-                                        <td>Jane</td>
-                                        <td>Doe</td>
-                                        <td>Female</td>
-                                        <td>janedoe@test.com</td>
-                                        <td>Sales</td>
-                                        <td>USER</td>
-                                        <td  class="text-center">
-                                            <a href="" class="btn btn-outline-info btn-sm"> <i class="fa fa-eye"></i> View</a>
-                                        </td>
-                                    </tr>
-                                    
-                                    
+                                
                                 </tbody>
                             </table>
                         </div>

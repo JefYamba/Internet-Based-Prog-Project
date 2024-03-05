@@ -1,10 +1,24 @@
 package cg.jefy.IBPProject.security;
 
-import org.springframework.context.annotation.Configuration;
-
 /**
  * @author: JefYamba
  */
-@Configuration
+//@Configuration
+//@AllArgsConstructor
+//@EnableWebSecurity
 public class SecurityConfig {
+
+    //private final UserDetailsServiceImpl userDetailsService;
+
+    /*@Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
+
+        return httpSecurity
+                .authorizeHttpRequests((authorizeHttpRequests) ->
+                        authorizeHttpRequests
+                                .anyRequest().permitAll()
+                )
+                .build();
+    }*/
+
 }

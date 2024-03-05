@@ -1,58 +1,29 @@
 package cg.jefy.IBPProject.controllers;
 
+import cg.jefy.IBPProject.services.BookService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @author: JefYamba
  */
-
 @Controller
+@AllArgsConstructor
 public class MainController {
 
-
-    @GetMapping("/getLoginPage")
-    public String getLoginPage(){
+    private final BookService bookService;
+    @GetMapping("/login")
+    public String getLogin(){
 
         return "login";
     }
 
-    @GetMapping("/getLayoutPage")
-    public String getLayoutPage(){
-
-        return "layout/_layout";
-    }
-
-    @GetMapping("/getHomePage")
-    public String getHomePage(){
+    @GetMapping({"/","/home"})
+    public String getHomePage(Model model){
+        model.addAttribute("books", bookService.getAllBooks());
 
         return "pages/home";
-    }
-    @GetMapping("/getUsersPage")
-    public String getUsersPage(){
-
-        return "pages/users";
-    }
-
-    @GetMapping("/getBooksPage")
-    public String getBooksPage(){
-
-        return "pages/books";
-    }
-
-    @GetMapping("/getEditUserPage")
-    public String getEditUserPage(){
-
-        return "pages/edit-user";
-    }
-    @GetMapping("/getEditBookPage")
-    public String getEditBookPage(){
-
-        return "pages/edit-book";
-    }
-    @GetMapping("/getBookDetailsPage")
-    public String getBookDetailsPage(){
-
-        return "pages/book-details";
     }
 }

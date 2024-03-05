@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/_layout">
 <body>
 
@@ -18,7 +19,7 @@
     </section>
     
     <section class="content">
-        <div class="container-fluid">
+        <div class="container-md">
             <div class="card">
                 <div class="card-header border-transparent">
                     <div class="container-fluid">
@@ -42,14 +43,14 @@
     </section>
     
     <section class="content">
-        <div class="container-fluid">
+        <div class="container-md">
             <!-- TABLE: LATEST ORDERS -->
             <div class="card">
                 <div class="card-header border-transparent">
                     <h3 class="card-title">All Books</h3>
                     
                     <div class="card-tools">
-                        <a href="#" class="btn btn-sm btn-info mx-2">Add New Book</a>
+                        <a th:href="@{/books/new}" class="btn btn-sm btn-info mx-2">Add New Book</a>
                     </div>
                 </div>
                 
@@ -61,35 +62,27 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">#</th>
-                                    <th>Image</th>
-                                    <th class="text-center">ISBN </th>
                                     <th class="text-left">Title</th>
                                     <th class="text-left">Author</th>
-                                    <th class="text-left">Editor</th>
+                                    <th class="text-left">Publisher</th>
+                                    <th class="text-center">ISBN </th>
                                     <th class="text-center">Unit Price</th>
-                                    <th class="text-center">Quantity</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th class="text-center">#</th>
-                                    <th style="height: 100px">
-                                        <div class="attachment-img" ><img th:src="@{images/harry-potter-book.jpg}" style="height: 60px" alt="Product Image"></div>
-                                    </th>
-                                    <td class="text-center">1172014</td>
-                                    <td class="text-left">Harry Potter</td>
-                                    <td class="text-left">Alexander Pierce</td>
-                                    <td class="text-left">Ed printer</td>
-                                    <td class="text-center">67.99</td>
-                                    <td class="text-center">530</td>
-                                    <td class="text-center">
-                                        <a href="" class="btn btn-outline-info btn-sm"> <i class="fa fa-eye"></i> View</a>
-                                    </td>
-                                </tr>
+                            <tr th:each="book, iterStat : ${books}">
                                 
-                                
-                                
+                                <th class="text-center"   th:text="${iterStat.count}"></th>
+                                <td class="text-left" th:text="${book.title}"></td>
+                                <td class="text-left" th:text="${book.author}"></td>
+                                <td class="text-left" th:text="${book.publisher}"></td>
+                                <td class="text-center" th:text="${book.isbn}"></td>
+                                <td class="text-center" th:text="${book.unitPrice}"></td>
+                                <td class="text-center">
+                                    <a th:href="@{/books/view/{id} (id=${book.id})}" class="btn btn-outline-info btn-sm"> <i class="fa fa-eye"></i> View</a>
+                                </td>
+                            </tr>
                             
                             </tbody>
                         </table>

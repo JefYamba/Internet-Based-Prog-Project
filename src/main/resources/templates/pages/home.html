@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/_layout">
 <body>
     
@@ -17,7 +18,7 @@
         </section>
         
         <section class="content">
-            <div class="container-fluid">
+            <div class="container-md">
                 <!-- Info boxes -->
                 <div class="row">
                     <div class="col-lg-3 col-6">
@@ -57,7 +58,7 @@
                                 <p>User Registrations</p>
                             </div>
                             <div class="icon">
-                                <i class="fas fa-user-plus"></i>
+                                <i class="fas fa-appUser-plus"></i>
                             </div>
                         </div>
                     </div>
@@ -84,8 +85,8 @@
                         <h3 class="card-title">Latest Books</h3>
                         
                         <div class="card-tools">
-                            <a href="#" class="btn btn-sm btn-info mx-2">Add New Book</a>
-                            <a href="#" class="btn btn-sm btn-secondary mx-2">View All Books</a>
+                            <a th:href="@{/books/new}" class="btn btn-sm btn-info mx-2">Add New Book</a>
+                            <a th:href="@{/books}" class="btn btn-sm btn-secondary mx-2">View All Books</a>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -95,52 +96,23 @@
                                 <thead>
                                 <tr>
                                     <th class="text-center">#</th>
-                                    <th>Image</th>
-                                    <th class="text-center">ISBN </th>
-                                    <th class="text-left">Product Name</th>
+                                    <th class="text-left">Title</th>
                                     <th class="text-left">Author</th>
-                                    <th class="text-left">Editor</th>
+                                    <th class="text-left">Publisher</th>
+                                    <th class="text-center">ISBN </th>
                                     <th class="text-center">Unit Price</th>
-                                    <th class="text-center">Quantity</th>
                                     
                                 </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <th class="text-center">#</th>
-                                        <th style="height: 100px">
-                                            <div class="attachment-img" ><img th:src="@{images/harry-potter-book.jpg}" style="height: 60px" alt="Product Image"></div>
-                                        </th>
-                                        <td class="text-center">1172014</td>
-                                        <td class="text-left">Harry Potter</td>
-                                        <td class="text-left">Alexander Pierce</td>
-                                        <td class="text-left">Editor</td>
-                                        <td class="text-center">67.99</td>
-                                        <td class="text-center">530</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="text-center">#</th>
-                                        <th>
-                                            <div class="attachment-img"><img th:src="@{images/harry-potter-book.jpg}" style="height: 60px"alt="Product Image"></div>
-                                        </th>
-                                        <td class="text-center">1172014</td>
-                                        <td class="text-left">Harry Potter</td>
-                                        <td class="text-left">Alexander Pierce</td>
-                                        <td class="text-left">Editor</td>
-                                        <td class="text-center">67.99</td>
-                                        <td class="text-center">530</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="text-center">#</th>
-                                        <th>
-                                            <div class="attachment-img"><img th:src="@{images/harry-potter-book.jpg}" style="height: 60px" alt="Product Image"></div>
-                                        </th>
-                                        <td class="text-center">1172014</td>
-                                        <td class="text-left">Harry Potter</td>
-                                        <td class="text-left">Alexander Pierce</td>
-                                        <td class="text-left">Editor</td>
-                                        <td class="text-center">67.99</td>
-                                        <td class="text-center">530</td>
+                                <tbody th:with="count=0">
+                                    <tr th:each="book : ${books}">
+                                        
+                                        <th class="text-center"  th:with="count=${count + 1}" th:text="${count}"></th>
+                                        <td class="text-left" th:text="${book.title}"></td>
+                                        <td class="text-left" th:text="${book.author}"></td>
+                                        <td class="text-left" th:text="${book.publisher}"></td>
+                                        <td class="text-center" th:text="${book.isbn}"></td>
+                                        <td class="text-center" th:text="${book.unitPrice}"></td>
                                     </tr>
                                 
                                 </tbody>

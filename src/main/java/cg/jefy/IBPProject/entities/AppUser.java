@@ -1,10 +1,7 @@
 package cg.jefy.IBPProject.entities;
 
-import cg.jefy.IBPProject.security.entities.Account;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.List;
 
 /**
  * @author: JefYamba
@@ -15,9 +12,10 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "users")
-public class User {
+public class AppUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,13 +30,14 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Column(nullable = false)
+    private String password;
+
+    @Column(length = 50)
     private String department;
 
-    @Lob
-    private byte[] image;
-
-    @OneToOne
-    @JoinColumn(name = "account_id")
-    private Account account;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "role_id")
+    private Role role;
 
 }

@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/_layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
 <body>
     <div layout:fragment="content">
       <!-- Content Header (Page header) -->
@@ -9,7 +14,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col">
-                        <h1>Edit Book</h1>
+                        <h1>Add New User</h1>
                     </div>
                 </div>
             </div>
@@ -18,52 +23,53 @@
         
         <section class="content">
             <div class="container-fluid">
-                <form class="row" th:object="${book}" th:action="@{/books/update/{id} (id = ${book.id})}" method="POST">
+                <form class="row" th:action="@{/users/add}"  th:object="${user}" method="POST">
+                    
                     
                     <div class="col-xl-6 col-md-9 col-12 mx-auto">
                         <div class="card  card-primary card-outline">
                             <div class="card-body">
                                 <div class="form-horizontal text-nowrap">
                                     <div class="form-group row my-2">
-                                        <label for="title" class="col-sm-2 col-form-label">Title</label>
+                                        <label for="firstname" class="col-sm-2 col-form-label">name</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="title" th:field="*{title}" placeholder="Title">
+                                            <input type="text" class="form-control" id="firstname" th:field="*{firstname}"  placeholder="Firstname">
                                         </div>
                                     </div>
                                     <div class="form-group row my-2">
-                                        <label for="author" class="col-sm-2 col-form-label">Author</label>
+                                        <label for="lastname" class="col-sm-2 col-form-label">Lastname</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="author" th:field="*{author}" placeholder="Author">
+                                            <input type="text" class="form-control" id="lastname" th:field="*{lastname}" placeholder="Lastname">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row my-2">
+                                        <label for="email" class="col-sm-2 col-form-label">Email</label>
+                                        <div class="col-sm-10">
+                                            <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Email">
                                         </div>
                                     </div>
                                     
                                     <div class="form-group row my-2">
-                                        <label for="editor" class="col-sm-2 col-form-label">Publisher</label>
+                                        <label for="phoneNumber" class="col-sm-2 col-form-label">Department</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="editor" th:field="*{publisher}" placeholder="Publisher">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row my-2">
-                                        <label for="ISBN" class="col-sm-2 col-form-label">ISBN</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="ISBN" th:field="*{isbn}" placeholder="ISBN">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row my-2">
-                                        <label for="unitPrice" class="col-sm-2 col-form-label">Unit Price</label>
-                                        <div class="col-sm-10">
-                                            <input type="number" step="0.01" min="0" class="form-control" id="unitPrice" th:field="*{unitPrice}" placeholder="Unit Price">
+                                            <input type="text" class="form-control" id="phoneNumber" th:field="*{department}" placeholder="Department">
                                         </div>
                                     </div>
                                     
-                                    
-                                    
+                                    <div class="form-group  row my-2">
+                                        <label for="selectRole" class="col-sm-2 col-form-label">Role</label>
+                                        <div class="col-sm-10">
+                                            <select id="selectRole" class="custom-select form-control" th:field="*{role}">
+                                                <option  th:each="roleOption : ${roles}" th:value="${roleOption}" th:text="${roleOption}"></option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                             </div><!-- /.card-body -->
                             
                             <div class="card-footer">
                                 <div class="text-right">
-                                    <button type="submit" class="btn btn-info btn-sm" style="width: 200px">Register</button>
+                                    <button type="submit" class="btn btn-info btn-sm" style="width: 200px">Add User</button>
                                 </div>
                             </div>
                         </div>
@@ -72,7 +78,7 @@
                 </form>
             </div>
         </section>
-        
+      
     </div>
 
 </body>

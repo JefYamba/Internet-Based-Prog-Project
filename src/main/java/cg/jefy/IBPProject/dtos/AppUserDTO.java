@@ -1,6 +1,5 @@
 package cg.jefy.IBPProject.dtos;
 
-import cg.jefy.IBPProject.entities.Role;
 import lombok.*;
 
 /**

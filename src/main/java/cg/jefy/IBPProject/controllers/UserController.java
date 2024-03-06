@@ -76,4 +76,42 @@ public class UserController {
         userService.deleteUser(id);
         return  "redirect:/users";
     }
+
+    @GetMapping("/profile")
+    public String getProfilePage(Model model){
+
+        // TODO get the current user object class and send to the profile page
+        model.addAttribute("user", new AppUserDTO());
+        return "pages/user-profile";
+    }
+
+    @GetMapping("/profile/update")
+    public String getProfileUpdatePage(Model model){
+
+        // TODO get the current user object class and send to the update profile page
+        model.addAttribute("user", new AppUserDTO());
+
+        return "pages/update-profile";
+    }
+    @PostMapping("/profile/update/{id}")
+    public String profileUpdate(@PathVariable("id") Long id, @ModelAttribute("user") AppUserDTO appUserDTO){
+
+        // TODO update operation of the current user
+
+        return "redirect:/users/profile";
+    }
+
+    @GetMapping("/profile/update-password")
+    public String getUpdatePasswordPage(){
+
+        return "pages/update-password";
+    }
+    @GetMapping("/profile/update-password/register")
+    public String updatePassword(){
+
+        // TODO update operation of the current user
+
+        return "redirect:/users/profile";
+    }
+
 }

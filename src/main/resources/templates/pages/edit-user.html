@@ -31,38 +31,36 @@
                             <div class="card-body">
                                 <div class="form-horizontal text-nowrap">
                                     <div class="form-group row my-2">
-                                        <label for="firstname" class="col-sm-2 col-form-label">name</label>
-                                        <div class="col-sm-10">
+                                        <label for="firstname" class="col-sm-3 col-form-label">name</label>
+                                        <div class="col-sm-9">
                                             <input type="text" class="form-control" id="firstname" th:field="*{firstname}"  placeholder="Firstname">
                                         </div>
                                     </div>
                                     <div class="form-group row my-2">
-                                        <label for="lastname" class="col-sm-2 col-form-label">Lastname</label>
-                                        <div class="col-sm-10">
+                                        <label for="lastname" class="col-sm-3 col-form-label">Lastname</label>
+                                        <div class="col-sm-9">
                                             <input type="text" class="form-control" id="lastname" th:field="*{lastname}" placeholder="Lastname">
                                         </div>
                                     </div>
                                     <div class="form-group row my-2">
-                                        <label for="email" class="col-sm-2 col-form-label">Email</label>
-                                        <div class="col-sm-10">
+                                        <label for="email" class="col-sm-3 col-form-label">Email</label>
+                                        <div class="col-sm-9">
                                             <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Email">
                                         </div>
                                     </div>
                                     
                                     <div class="form-group row my-2">
-                                        <label for="phoneNumber" class="col-sm-2 col-form-label">Department</label>
-                                        <div class="col-sm-10">
+                                        <label for="phoneNumber" class="col-sm-3 col-form-label">Department</label>
+                                        <div class="col-sm-9">
                                             <input type="text" class="form-control" id="phoneNumber" th:field="*{department}" placeholder="Department">
                                         </div>
                                     </div>
                                     
                                     <div class="form-group  row my-2">
-                                        <label class="col-sm-2 col-form-label">Role</label>
-                                        <div class="col-sm-10">
-                                            <select class="custom-select form-control" th:field="*{role}">
-                                                <select class="custom-select form-control" th:field="*{role}">
-                                                    <option  th:each="roleOption : ${roles}" th:value="${roleOption}" th:text="${roleOption}"></option>
-                                                </select>
+                                        <label for="role" class="col-sm-3 col-form-label">Role</label>
+                                        <div class="col-sm-9">
+                                            <select id="role" class="custom-select form-control" th:field="*{role}">
+                                                <option  th:each="roleOption : ${roles}" th:value="${roleOption}" th:text="${roleOption}"></option>
                                             </select>
                                         </div>
                                     </div>
@@ -70,8 +68,16 @@
                             </div><!-- /.card-body -->
                             
                             <div class="card-footer">
-                                <div class="text-right">
-                                    <button type="submit" class="btn btn-info btn-sm" style="width: 200px">Register</button>
+                                <div class="d-flex justify-content-between">
+                                    <div class="text-left">
+                                        <a th:href="@{/users/view/{id} (id=${user.id})}" class="btn btn-sm btn-secondary mx-2">
+                                            <i class="fa fa-arrow-left  mx-2"></i> Profile
+                                        </a>
+                                    </div>
+                                    
+                                    <div class="text-right">
+                                        <button type="submit" class="btn btn-info btn-sm" style="width: 200px">Register</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

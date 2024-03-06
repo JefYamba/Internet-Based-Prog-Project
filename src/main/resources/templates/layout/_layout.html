@@ -14,7 +14,7 @@
     <link rel="stylesheet" th:href="@{/plugins/fontawesome-free/css/all.min.css}" type="text/css">
     <!-- Ionicons -->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
-    <!-- Tempusdominus Bootstrap 4 -->
+    <!-- Tempus dominus Bootstrap 4 -->
     <link rel="stylesheet" th:href="@{/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css}"
           type="text/css">
     <!-- iCheck -->
@@ -25,7 +25,7 @@
     <link rel="stylesheet" th:href="@{/dist/css/adminlte.min.css}" type="text/css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" th:href="@{/plugins/overlayScrollbars/css/OverlayScrollbars.min.css}" type="text/css">
-    <!-- Daterange picker -->
+    <!-- Date range picker -->
     <link rel="stylesheet" th:href="@{/plugins/daterangepicker/daterangepicker.css}" type="text/css">
     <!-- summernote -->
     <link rel="stylesheet" th:href="@{/plugins/summernote/summernote-bs4.min.css}" type="text/css">
@@ -68,14 +68,14 @@
                     </a>
                     
                     <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
-                        <a class="dropdown-item text-right" href="#">
+                        <a class="dropdown-item text-right" th:href="@{/users/profile}">
                             <span class="mx-2">Profile</span>
-                            <i class="fa fa-id-card" aria-hidden="true"></i>
+                            <i class="fa fa-id-card"></i>
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item  text-right" href="#">
                             <span class="mx-2 text-danger">Logout</span>
-                            <i class="fa fa-lock text-danger" aria-hidden="true"></i>
+                            <i class="fa fa-lock text-danger"></i>
                         </a>
                     </div>
                 </li>
@@ -109,36 +109,6 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-header">PERSONAL</li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="nav-icon fas fa-user"></i>
-                                <p>
-                                    Profile
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a class="nav-link pl-4 " href="#">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>View Profile</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link pl-4" href="#">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Edit Profile</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link pl-4" href="#">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Change Password</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
                         <li class="nav-header">ADMIN</li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
@@ -150,15 +120,15 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a class="nav-link pl-4 " th:href="@{/books/new}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add Book</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link pl-4" th:href="@{/books}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>View All Books</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link pl-4 " th:href="@{/books/new}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Book</p>
                                     </a>
                                 </li>
                             </ul>
@@ -173,15 +143,15 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a class="nav-link pl-4 " th:href="@{/users/new}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add User</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link pl-4" th:href="@{/users}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>View All Users</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link pl-4 " th:href="@{/users/new}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add User</p>
                                     </a>
                                 </li>
                             </ul>
@@ -235,10 +205,10 @@
     <script th:src="@{/plugins/jqvmap/maps/jquery.vmap.usa.js}" type="text/javascript"></script>
     <!-- jQuery Knob Chart -->
     <script th:src="@{/plugins/jquery-knob/jquery.knob.min.js}" type="text/javascript"></script>
-    <!-- daterangepicker -->
+    <!-- date range picker -->
     <script th:src="@{/plugins/moment/moment.min.js}" type="text/javascript"></script>
     <script th:src="@{/plugins/daterangepicker/daterangepicker.js}" type="text/javascript"></script>
-    <!-- Tempusdominus Bootstrap 4 -->
+    <!-- Tempus dominus Bootstrap 4 -->
     <script th:src="@{/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js}"
             type="text/javascript"></script>
     <!-- Summernote -->

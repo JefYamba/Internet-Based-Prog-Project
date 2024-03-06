@@ -111,50 +111,20 @@
                         </li>
                         <li class="nav-header">ADMIN</li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" th:href="@{/books}">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
                                     Books
-                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a class="nav-link pl-4" th:href="@{/books}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>View All Books</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link pl-4 " th:href="@{/books/new}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add Book</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="#">
+                            <a class="nav-link " th:href="@{/users}">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Users
-                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a class="nav-link pl-4" th:href="@{/users}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>View All Users</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link pl-4 " th:href="@{/users/new}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add User</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                         
                     </ul>

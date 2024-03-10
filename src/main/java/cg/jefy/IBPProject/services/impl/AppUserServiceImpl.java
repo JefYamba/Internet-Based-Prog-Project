@@ -7,6 +7,7 @@ import cg.jefy.IBPProject.repositories.AppUserRepository;
 import cg.jefy.IBPProject.repositories.RoleRepository;
 import cg.jefy.IBPProject.services.AppUserService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,7 +26,7 @@ public class AppUserServiceImpl implements AppUserService {
     private final AppUserRepository appUserRepository;
     private final AppUserToUserDTOMapper appUserToUserDTOMapper;
     private final RoleRepository roleRepository;
-    //private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
 
     @Override
@@ -45,11 +46,15 @@ public class AppUserServiceImpl implements AppUserService {
         if (appUserDTO.getFirstname() == null && appUserDTO.getLastname() == null && appUserDTO.getEmail() == null)
             throw new RuntimeException("Firstname, Lastname or Email missing!");
 
+        AppUser appUserToUpdate = appUserRepository.findByEmail(appUserDTO.getEmail());
+        if (appUserToUpdate != null)
+            return null;
+
         AppUser newAppUser = AppUser.builder()
                 .firstname(appUserDTO.getFirstname())
                 .lastname(appUserDTO.getLastname())
                 .email(appUserDTO.getEmail())
-                .password(appUserDTO.getEmail())
+                .password(passwordEncoder.encode(appUserDTO.getEmail()))
                 .department(appUserDTO.getDepartment())
                 .role(roleRepository.findById(appUserDTO.getRole())
                         .orElseThrow(()-> new RuntimeException(
@@ -89,6 +94,12 @@ public class AppUserServiceImpl implements AppUserService {
     @Override
     public AppUser loadUserByUsername(String username) {
         return appUserRepository.findByEmail(username);
+    }
+
+    @Override
+    public AppUserDTO getByEmail(String email) {
+        AppUser appUser = appUserRepository.findByEmail(email);
+        return appUserToUserDTOMapper.apply(appUser);
     }
 
 }

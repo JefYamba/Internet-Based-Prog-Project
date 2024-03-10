@@ -49,8 +49,13 @@
                 <div class="card-header border-transparent">
                     <h3 class="card-title">All Books</h3>
                     
-                    <div class="card-tools">
-                        <a th:href="@{/books/new}" class="btn btn-sm btn-info mx-2">Add New Book</a>
+                    <div class="card-tools" >
+                        <a th:href="@{/books/new}"
+                           th:if="${#authorization.expression('hasRole(''ADMIN'')')}"
+                           class="btn btn-sm btn-info mx-2"
+                        >
+                            Add New Book
+                        </a>
                     </div>
                 </div>
                 

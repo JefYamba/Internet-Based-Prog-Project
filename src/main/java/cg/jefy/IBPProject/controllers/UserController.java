@@ -1,13 +1,17 @@
 package cg.jefy.IBPProject.controllers;
 
 import cg.jefy.IBPProject.dtos.AppUserDTO;
+import cg.jefy.IBPProject.entities.AppUser;
 import cg.jefy.IBPProject.entities.Role;
+import cg.jefy.IBPProject.mappers.AppUserToUserDTOMapper;
 import cg.jefy.IBPProject.services.AppUserService;
 import cg.jefy.IBPProject.services.RoleService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 /**
  * @author: JefYamba
@@ -19,6 +23,7 @@ public class UserController {
 
     private final AppUserService userService;
     private final RoleService roleService;
+    private final AppUserToUserDTOMapper appUserToUserDTOMapper;
 
     @GetMapping({"","/"})
     public String getUsersPage(Model model){
@@ -78,25 +83,23 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    public String getProfilePage(Model model){
+    public String getProfilePage(Model model, Principal principal){
 
-        // TODO get the current user object class and send to the profile page
-        model.addAttribute("user", new AppUserDTO());
+        model.addAttribute("user", userService.getByEmail(principal.getName()));
         return "pages/user-profile";
     }
 
     @GetMapping("/profile/update")
-    public String getProfileUpdatePage(Model model){
+    public String getProfileUpdatePage(Model model, Principal principal){
 
-        // TODO get the current user object class and send to the update profile page
-        model.addAttribute("user", new AppUserDTO());
+        model.addAttribute("user", userService.getByEmail(principal.getName()));
 
         return "pages/update-profile";
     }
     @PostMapping("/profile/update/{id}")
     public String profileUpdate(@PathVariable("id") Long id, @ModelAttribute("user") AppUserDTO appUserDTO){
 
-        // TODO update operation of the current user
+        userService.updateUser(id, appUserDTO);
 
         return "redirect:/users/profile";
     }

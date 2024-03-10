@@ -24,4 +24,5 @@ public interface AppUserService {
     AppUser loadUserByUsername(String username);
 
 
+    AppUserDTO getByEmail(String email);
 }

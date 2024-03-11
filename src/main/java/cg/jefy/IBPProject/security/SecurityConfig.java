@@ -18,20 +18,22 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private final UserDetailsServiceImpl userDetailsService;
+    private final CustomUserDetailsService customUserDetailsService;
     private final PasswordEncoder passwordEncoder;
+
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
 
 
         return httpSecurity
-
                 .authenticationProvider(authenticationProvider())
-                .userDetailsService(userDetailsService)
                 .authorizeHttpRequests((authorizeHttpRequests) ->
                         authorizeHttpRequests
                                 .requestMatchers("/login").permitAll()
+                                .requestMatchers("/dist/**").permitAll()
+                                .requestMatchers("/images/**").permitAll()
+                                .requestMatchers("/plugins/**").permitAll()
                                 .requestMatchers("/users/profile").hasRole("USER")
                                 .requestMatchers("/users/profile/**").hasRole("USER")
                                 .requestMatchers("/books").hasRole("USER")
@@ -52,15 +54,8 @@ public class SecurityConfig {
                 )
                 .exceptionHandling((exception)->
                         exception.accessDeniedPage("/") // for denied access
-                        )
-//                .logout((logout) ->
-//                        logout
-//                                .deleteCookies("JSESSIONID")
-//                                .invalidateHttpSession(true)
-//                                .logoutUrl("/logout")
-//                                .logoutSuccessUrl("/login")
-//                )
-//                .userDetailsService(userDetailsService)
+
+                )
                 .build();
     }
 
@@ -68,7 +63,7 @@ public class SecurityConfig {
     public AuthenticationProvider authenticationProvider() {
         final DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
 
-        authenticationProvider.setUserDetailsService(userDetailsService);
+        authenticationProvider.setUserDetailsService(customUserDetailsService);
         authenticationProvider.setPasswordEncoder(passwordEncoder);
 
         return authenticationProvider;
